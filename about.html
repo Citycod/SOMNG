@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - School of Mathematics Nigeria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #FFD700;
+            --purple: #800080;
+            --green: #2E8B57;
+            --lavender: #E6E6FA;
+            --dark: #212529;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            padding-top: 76px;
+            background-color: #f8f9fa;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+/* Advanced Menu Styles */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
+            transition: all 0.4s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.3rem 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #800080 !important;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-brand img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled .navbar-brand img {
+            height: 40px;
+        }
+        
+        .nav-item {
+            position: relative;
+            margin: 0 0.3rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            padding: 0.8rem 1rem !important;
+            color: #333 !important;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 1rem;
+            width: calc(100% - 2rem);
+            height: 2px;
+            background: #FFD700;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+        
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.3s ease forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            color: #555;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .dropdown-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: #800080;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(128, 0, 128, 0.05);
+            color: #800080;
+            padding-left: 1.8rem;
+        }
+        
+        .dropdown-item:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .dropdown-divider {
+            margin: 0.3rem 1rem;
+            border-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Mega Menu */
+        .mega-menu {
+            position: static !important;
+        }
+        
+        .mega-menu-content {
+            left: 0;
+            right: 0;
+            width: 100%;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 1rem 1rem;
+        }
+        
+        .mega-menu-title {
+            font-weight: 600;
+            color: #800080;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #FFD700;
+        }
+        
+        .mega-menu-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+        
+        .mega-menu-link:hover {
+            color: #800080;
+            transform: translateX(5px);
+        }
+        
+        /* Mobile Menu */
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .offcanvas {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
+        
+        .offcanvas-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .btn-close:focus {
+            box-shadow: none;
+        }
+        
+        /* CTA Button */
+        .nav-cta {
+            background: linear-gradient(135deg, #800080, #5a005a);
+            color: white !important;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1.5rem !important;
+            margin-left: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-cta:hover {
+            background: linear-gradient(135deg, #5a005a, #800080);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(128, 0, 128, 0.3);
+        }
+        
+        .nav-cta::before {
+            display: none;
+        }
+                /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                padding: 1rem 0;
+            }
+            
+            .nav-item {
+                margin: 0;
+            }
+            
+            .nav-link {
+                padding: 0.8rem 1.5rem !important;
+            }
+            
+            .dropdown-menu {
+                animation: none;
+                opacity: 1;
+                transform: none;
+                box-shadow: none;
+                border-left: 3px solid rgba(128, 0, 128, 0.1);
+                margin-top: 0;
+                border-radius: 0;
+            }
+            
+            .dropdown-item {
+                padding: 0.5rem 2rem;
+            }
+            
+            .nav-cta {
+                margin: 1rem 1.5rem 0;
+                display: block;
+                text-align: center;
+            }
+        }
+        
+        
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .btn-purple {
+            background-color: var(--purple);
+            color: white;
+        }
+        
+        .btn-green {
+            background-color: var(--green);
+            color: white;
+        }
+        
+        .about-hero {
+            background: linear-gradient(rgba(128, 0, 128, 0.9), rgba(128, 0, 128, 0.8)), url('https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') no-repeat center/cover;
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .mission-card {
+            border-left: 5px solid var(--gold);
+            transition: all 0.3s;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .team-member {
+            transition: all 0.3s;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .team-img {
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .value-card {
+            border-radius: 10px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--purple);
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--gold);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--purple);
+            border: 4px solid var(--gold);
+        }
+        
+        .impact-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--purple);
+        }
+        
+        .footer {
+            background: var(--dark);
+            color: white;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+    </style>
+</head>
+<body>
+     <!-- Navigation Bar
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./images/Schoolofmlogo.png" alt="School of Mathematics Nigeria Logo" class="me-2">
+                <span class="d-none d-md-inline">SOMNG</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+</button><div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="programs.html">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resources.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-gold btn-sm" href="#">Join Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container text-center">
+            <h1 class="display-3 fw-bold mb-4">About School of Mathematics Nigeria</h1>
+            <p class="lead mb-4">Transforming math education across Africa through innovation, accessibility, and excellence</p>
+            <a href="#mission" class="btn btn-gold btn-lg">Our Mission</a>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="mb-4">Our Mission & Vision</h2>
+                    <p class="lead">To make mathematics accessible, engaging, and enjoyable for every African learner, regardless of their background or location.</p>
+                    <p>We believe that mathematical literacy is a fundamental right and a critical skill for Africa's development. Our vision is to create a continent where every student has the mathematical foundation needed to pursue STEM careers and contribute to technological innovation.</p>
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <a href="#values" class="btn btn-purple">Our Values</a>
+                        <a href="#team" class="btn btn-outline-dark">Meet Our Team</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="mission-card p-4 bg-white shadow-sm rounded h-100">
+                                <i class="fas fa-bullseye text-purple mb-3" style="font-size: 2rem;"></i>
+                                <h3>Our Mission</h3>
+                                <p>To democratize mathematics education through innovative teaching methods and accessible learning platforms.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mission-card p-4 bg-white shadow-sm rounded h-100">
+                                <i class="fas fa-eye text-gold mb-3" style="font-size: 2rem;"></i>
+                                <h3>Our Vision</h3>
+                                <p>To become Africa's leading mathematics education innovator, reaching 1 million students by 2030.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mission-card p-4 bg-white shadow-sm rounded h-100">
+                                <i class="fas fa-handshake text-green mb-3" style="font-size: 2rem;"></i>
+                                <h3>Our Approach</h3>
+                                <p>Blending traditional pedagogy with technology to create engaging, effective learning experiences.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mission-card p-4 bg-white shadow-sm rounded h-100">
+                                <i class="fas fa-chart-line text-purple mb-3" style="font-size: 2rem;"></i>
+                                <h3>Our Impact</h3>
+                                <p>150,000+ learners reached across 5 countries with measurable improvements in math proficiency.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Story</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h3 class="mb-4">From Humble Beginnings</h3>
+                    <p>School of Mathematics Nigeria was founded in 2018 by a team of passionate educators and mathematicians who recognized the systemic challenges facing mathematics education across Africa.</p>
+                    <p>What began as a small tutoring initiative in Lagos has grown into a comprehensive educational ecosystem serving students, teachers, and parents across Nigeria and beyond.</p>
+                    <p>Our journey has been guided by a simple but powerful belief: every student can excel in mathematics when given the right tools, support, and encouragement.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>2018</h4>
+                            <p>Founded with just 20 students in a community center in Lagos</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2019</h4>
+                            <p>Launched our digital platform, reaching 5,000 students online</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2020</h4>
+                            <p>Pivoted to remote learning during pandemic, expanded to 3 countries</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2021</h4>
+                            <p>Launched UThrive initiative for underserved communities</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2022</h4>
+                            <p>Reached 100,000 learners milestone</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2023</h4>
+                            <p>Expanded to 5 countries, launched Currigami curriculum studio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Values</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="value-card p-4 bg-white shadow-sm text-center">
+                        <div class="value-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Excellence</h3>
+                        <p>We maintain the highest standards in curriculum development, teaching methodology, and student support.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card p-4 bg-white shadow-sm text-center">
+                        <div class="value-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h3>Accessibility</h3>
+                        <p>We believe quality math education should be available to all, regardless of socioeconomic status.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card p-4 bg-white shadow-sm text-center">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Innovation</h3>
+                        <p>We continuously explore new approaches to make math learning engaging and effective.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card p-4 bg-white shadow-sm text-center">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Community</h3>
+                        <p>We build supportive learning communities that extend beyond the classroom.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card p-4 bg-white shadow-sm text-center">
+                        <div class="value-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Growth</h3>
+                        <p>We foster a growth mindset, encouraging students to embrace challenges and learn from mistakes.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card p-4 bg-white shadow-sm text-center">
+                        <div class="value-icon">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <h3>Impact</h3>
+                        <p>We measure our success by the tangible improvement in students' mathematical abilities and confidence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Leadership Team</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="team-member bg-white shadow-sm rounded overflow-hidden">
+                        <img src="./images/rose danjuma.jpg" alt="Founder" class="w-100 team-img">
+                        <div class="p-4">
+                            <h3 class="mb-1">Rose Danjuma</h3>
+                            <p class="text-muted mb-3">Founder & Executive Director</p>
+                            <p class="mb-3"></p>
+                            <div class="d-flex">
+                                <a href="#" class="social-icon me-2"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-4">
+                    <div class="team-member bg-white shadow-sm rounded overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Curriculum Director" class="w-100 team-img">
+                        <div class="p-4">
+                            <h3 class="mb-1">Chinedu Okoro</h3>
+                            <p class="text-muted mb-3">Curriculum Director</p>
+                            <p class="mb-3">Master's in Curriculum Design, specializing in creating culturally relevant math content for African students.</p>
+                            <div class="d-flex">
+                                <a href="#" class="social-icon me-2"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member bg-white shadow-sm rounded overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Technology Lead" class="w-100 team-img">
+                        <div class="p-4">
+                            <h3 class="mb-1">Tunde Williams</h3>
+                            <p class="text-muted mb-3">Technology Lead</p>
+                            <p class="mb-3">Software engineer with a passion for creating educational technology solutions for low-bandwidth environments.</p>
+                            <div class="d-flex">
+                                <a href="#" class="social-icon me-2"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-purple">View Full Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Impact</h2>
+            <div class="row g-4">
+                <div class="col-md-3 text-center">
+                    <div class="impact-number">150,000+</div>
+                    <p class="fw-bold">Learners Reached</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="impact-number">5+</div>
+                    <p class="fw-bold">Countries</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="impact-number">1,000+</div>
+                    <p class="fw-bold">Teachers Trained</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="impact-number">94%</div>
+                    <p class="fw-bold">Success Rate</p>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-gold">Download Impact Report</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-purple text-black">
+        <div class="container text-center">
+            <h2 class="mb-4">Join Our Mission</h2>
+            <p class="lead mb-4">Be part of the movement to transform mathematics education across Africa</p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="#" class="btn btn-lg btn-gold">Partner With Us</a>
+                <a href="#" class="btn btn-lg btn-success">Donate</a>
+                <a href="#" class="btn btn-lg btn-light">Join Our Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3>School of Mathematics Nigeria</h3>
+                    <p class="mb-4">Innovating math education across Africa through accessible, engaging, and effective learning solutions.</p>
+                    <div class="social-icons mb-4">
+                        <a href="#" class="social-icon text-white me-2"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon text-white me-2"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon text-white me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <div class="small text-muted">
+                        <i class="fas fa-map-marker-alt me-2"></i> Lagos, Nigeria | Global Impact
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="about.html" class="text-white text-decoration-none">About Us</a></li>
+                        <li><a href="programs.html" class="text-white text-decoration-none">Programs</a></li>
+                        <li><a href="resources.html" class="text-white text-decoration-none">Resources</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5>Programs</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">SomNg Digital Learning</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">UThrive Initiative</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Currigami Studio</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Teacher Training</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Parent Workshops</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2 text-muted"></i>
+                            <a href="mailto:contact@schoolofmath.ng" class="text-white text-decoration-none">contact@schoolofmath.ng</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fab fa-whatsapp me-2 text-muted"></i>
+                            <a href="https://wa.me/2349014149124" class="text-white text-decoration-none">+234 901 414 9124</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2 text-muted"></i>
+                            <a href="tel:+2349014149124" class="text-white text-decoration-none">+234 901 414 9124</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-clock me-2 text-muted"></i>
+                            Mon-Fri: 9AM - 5PM WAT
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0 small">&copy; 2025 School of Mathematics Nigeria. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-muted small me-3">Privacy Policy</a>
+                    <a href="#" class="text-muted small me-3">Terms of Service</a>
+                    <a href="#" class="text-muted small">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

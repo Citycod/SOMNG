@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School of Mathematics Nigeria - Innovating Math Education Across Africa</title>
+    <link href="./bootstrap/bootstrap-5.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./fontawesome-free-6.7.2-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --gold: #FFD700;
+            --purple: #800080;
+            --green: #2E8B57;
+            --lavender: #E6E6FA;
+            --dark: #212529;
+            --light-gray: #f8f9fa;
+            --dark-purple: #5a005a;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            padding-top: 72px; /* Increased for better spacing with fixed navbar */
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, .display-1, .display-2, .display-3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        /* Advanced Menu Styles */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
+            transition: all 0.4s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.3rem 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #800080 !important;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-brand img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled .navbar-brand img {
+            height: 40px;
+        }
+        
+        .nav-item {
+            position: relative;
+            margin: 0 0.3rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            padding: 0.8rem 1rem !important;
+            color: #333 !important;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 1rem;
+            width: calc(100% - 2rem);
+            height: 2px;
+            background: #FFD700;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+        
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.3s ease forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            color: #555;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .dropdown-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: #800080;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(128, 0, 128, 0.05);
+            color: #800080;
+            padding-left: 1.8rem;
+        }
+        
+        .dropdown-item:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .dropdown-divider {
+            margin: 0.3rem 1rem;
+            border-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Mega Menu */
+        .mega-menu {
+            position: static !important;
+        }
+        
+        .mega-menu-content {
+            left: 0;
+            right: 0;
+            width: 100%;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 1rem 1rem;
+        }
+        
+        .mega-menu-title {
+            font-weight: 600;
+            color: #800080;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #FFD700;
+        }
+        
+        .mega-menu-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+        
+        .mega-menu-link:hover {
+            color: #800080;
+            transform: translateX(5px);
+        }
+        
+        /* Mobile Menu */
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .offcanvas {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
+        
+        .offcanvas-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .btn-close:focus {
+            box-shadow: none;
+        }
+        
+        /* CTA Button */
+        .nav-cta {
+            background: linear-gradient(135deg, #800080, #5a005a);
+            color: white !important;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1.5rem !important;
+            margin-left: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-cta:hover {
+            background: linear-gradient(135deg, #5a005a, #800080);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(128, 0, 128, 0.3);
+        }
+        
+        .nav-cta::before {
+            display: none;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                padding: 1rem 0;
+            }
+            
+            .nav-item {
+                margin: 0;
+            }
+            
+            .nav-link {
+                padding: 0.8rem 1.5rem !important;
+            }
+            
+            .dropdown-menu {
+                animation: none;
+                opacity: 1;
+                transform: none;
+                box-shadow: none;
+                border-left: 3px solid rgba(128, 0, 128, 0.1);
+                margin-top: 0;
+                border-radius: 0;
+            }
+            
+            .dropdown-item {
+                padding: 0.5rem 2rem;
+            }
+            
+            .nav-cta {
+                margin: 1rem 1.5rem 0;
+                display: block;
+                text-align: center;
+            }
+        }
+
+        /* Rest of your existing CSS styles... */
+        .hero-section {
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.97)), 
+                        url('./images/math-pattern-bg.jpg') repeat;
+            background-size: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), white);
+            z-index: 1;
+        }
+        
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--dark);
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-gold:hover {
+            background-color: #e6c200;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        .btn-purple {
+            background-color: var(--purple);
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .btn-purple:hover {
+            background-color: var(--dark-purple);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(128, 0, 128, 0.3);
+        }
+        
+        .btn-green {
+            background-color: var(--green);
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .btn-green:hover {
+            background-color: #267749;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.3);
+        }
+        
+        .program-card {
+            transition: all 0.3s;
+            border: none;
+            border-radius: 12px !important;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+        }
+        
+        .program-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--purple);
+        }
+        
+        /* Impact Stats */
+        .stat-card {
+            border-left: 5px solid var(--gold);
+            transition: all 0.4s;
+            height: 100%;
+            border-radius: 8px !important;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 0.5rem;
+        }
+        
+        .partner-logo {
+            height: 80px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+            padding: 10px;
+        }
+        
+        .partner-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        /* Brand Sections */
+        .somng-brand { 
+            border-top: 5px solid var(--gold);
+            background: linear-gradient(135deg, rgba(255,215,0,0.05) 0%, rgba(255,255,255,1) 100%);
+        }
+        
+        .uthrive-brand { 
+            border-top: 5px solid var(--green);
+            background: linear-gradient(135deg, rgba(46,139,87,0.05) 0%, rgba(255,255,255,1) 100%);
+        }
+        
+        .currigami-brand { 
+            border-top: 5px solid var(--purple);
+            background: linear-gradient(135deg, rgba(128,0,128,0.05) 0%, rgba(255,255,255,1) 100%);
+        }
+        
+        /* Clients Section */
+        .client-logo {
+            height: 60px;
+            transition: all 0.3s;
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-card {
+            border-radius: 12px;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+        }
+        
+        .floating-badge {
+            position: absolute;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 10;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .video-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: all 0.5s;
+            border: 5px solid white;
+        }
+        
+        .video-container:hover {
+            transform: perspective(1000px) rotateY(0deg);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+        
+        .section-title.center::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .bg-purple-gradient {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--dark-purple) 100%);
+        }
+        
+        .impact-statement li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .impact-statement li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--gold);
+        }
+        
+        .donation-option {
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .donation-option:hover {
+            transform: translateY(-3px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .progress {
+            height: 12px;
+            border-radius: 6px;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, var(--purple), var(--gold));
+            border-radius: 6px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--gold);
+            color: var(--dark) !important;
+            transform: translateY(-3px);
+        }
+        
+        .footer-link {
+            color: rgba(255,255,255,0.7);
+            transition: all 0.3s;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        
+        .footer-link:hover {
+            color: white;
+            transform: translateX(5px);
+            text-decoration: none;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .video-container {
+                transform: none;
+                margin-top: 2rem;
+            }
+            
+            .section-title::after {
+                bottom: -8px;
+            }
+        }
+        
+        /* Animation classes */
+        .animate-delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .animate-delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .animate-delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./images/Schoolofmlogo.png" alt="School of Mathematics Nigeria Logo" class="me-2">
+                <span class="d-none d-md-inline">SOMNG</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown">
+                            Programs
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="programsDropdown">
+                            <li><h6 class="dropdown-header">For Students</h6></li>
+                            <li><a class="dropdown-item" href="#">WAEC/JAMB Prep</a></li>
+                            <li><a class="dropdown-item" href="#">TEAS Exam Coaching</a></li>
+                            <li><a class="dropdown-item" href="#">STEM Foundation</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><h6 class="dropdown-header">For Teachers</h6></li>
+                            <li><a class="dropdown-item" href="#">Professional Development</a></li>
+                            <li><a class="dropdown-item" href="#">Classroom Resources</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item mega-menu dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown">
+                            Resources
+                        </a>
+                        <div class="dropdown-menu mega-menu-content" aria-labelledby="resourcesDropdown">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h5 class="mega-menu-title">Learning Materials</h5>
+                                        <a href="#" class="mega-menu-link">Video Lessons</a>
+                                        <a href="#" class="mega-menu-link">Practice Worksheets</a>
+                                        <a href="#" class="mega-menu-link">Formula Sheets</a>
+                                        <a href="#" class="mega-menu-link">Past Questions</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h5 class="mega-menu-title">Teaching Tools</h5>
+                                        <a href="#" class="mega-menu-link">Lesson Plans</a>
+                                        <a href="#" class="mega-menu-link">Activities</a>
+                                        <a href="#" class="mega-menu-link">Assessment Tools</a>
+                                        <a href="#" class="mega-menu-link">Pedagogy Guides</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h5 class="mega-menu-title">Parent Resources</h5>
+                                        <a href="#" class="mega-menu-link">Homework Help</a>
+                                        <a href="#" class="mega-menu-link">Growth Mindset</a>
+                                        <a href="#" class="mega-menu-link">STEM Careers</a>
+                                        <a href="#" class="mega-menu-link">Learning Apps</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h5 class="mega-menu-title">Quick Downloads</h5>
+                                        <a href="#" class="btn btn-outline-purple w-100 mb-2">WAEC Pack</a>
+                                        <a href="#" class="btn btn-outline-success w-100 mb-2">JAMB Pack</a>
+                                        <a href="#" class="btn btn-outline-warning w-100">TEAS Guide</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="about.html" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+                            About Us
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="#">Our Story</a></li>
+                            <li><a class="dropdown-item" href="#">Our Team</a></li>
+                            <li><a class="dropdown-item" href="#">Our Methodology</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Impact Report</a></li>
+                            <li><a class="dropdown-item" href="#">Partners</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link nav-cta" href="#">
+                            <i class="fas fa-user-plus me-1"></i> Join Now
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero-section py-5" id="home">
+        <div class="container-fluid py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title display-4 fw-bold mb-4 animate__animated animate__fadeInDown">
+                        We're Innovating How Africans Learn Mathematics
+                    </h1>
+                    <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">
+                        From WAEC and JAMB to TEAS and tech-driven futures, we blend clear instruction with innovative approaches to help learners excel, whether in Kaduna or California.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 mb-4 animate__animated animate__fadeIn animate__delay-2s">
+                        <a href="#resources" class="btn btn-gold btn-lg px-4">
+                            <i class="fas fa-download me-2"></i>Free Resources
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=WvYP4dHz3bc" target="_blank" class="btn btn-outline-dark btn-lg px-4">
+                            <i class="fab fa-youtube me-2"></i>Watch Videos
+                        </a>
+                    </div>
+                    <div class="d-flex flex-wrap align-items-center gap-3 animate__animated animate__fadeIn animate__delay-3s">
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <img src="./images/testi1.jpg" alt="Happy student" class="rounded-circle" width="40" height="40">
+                                <img src="./images/testi2.jpg" alt="Happy student" class="rounded-circle ms-n2" width="40" height="40">
+
+                            </div>
+                            <div>
+                                <div class="text-warning small">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <small class="text-muted">Trusted by 150,000+ learners</small>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/2349014149124" target="_blank" class="btn btn-success btn-sm">
+                            <i class="fab fa-whatsapp me-2"></i>Join WhatsApp Class
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="position-relative animate__animated animate__fadeInRight">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/I89tnFto3rw?autoplay=0&mute=1&controls=1&rel=0" 
+                                    title="Mathematics Tutorial Video" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen
+                                    class="w-100"
+                                    style="height: 350px;"></iframe>
+                        </div>
+                        <div class="floating-badge" style="top: -1rem; right: -1rem; animation-delay: 0.5s;">
+                            <i class="fas fa-medal me-2"></i>WAEC & JAMB Ready!
+                        </div>
+                        <div class="floating-badge" style="bottom: -1rem; left: -1rem; background: var(--purple); color: white; animation-delay: 1s;">
+                            <i class="fas fa-tag me-2"></i>₦5,000 - ₦10,000
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="py-5 bg-light">
+        <div class="container-fluid">
+            <div class="row g-4">
+                <div class="col-md-4 animate__animated animate__fadeInUp">
+                    <div class="stat-card p-4 bg-white shadow-sm rounded h-100">
+                        <div class="stat-number">150,000+</div>
+                        <p class="mb-0">Learners reached across Nigeria & diaspora through our programs and content</p>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="stat-card p-4 bg-white shadow-sm rounded h-100">
+                        <div class="stat-number">1,000+</div>
+                        <p class="mb-0">Students personally coached from WAEC to TEAS exam preparation</p>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="stat-card p-4 bg-white shadow-sm rounded h-100">
+                        <div class="stat-number">5+</div>
+                        <p class="mb-0">Countries accessing our educational content and resources</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-5">
+        <div class="container-fluid">
+            <h2 class="text-center section-title center mb-5">Our Learning Paths</h2>
+            <div class="row g-4">
+                <!-- Student Courses -->
+                <div class="col-md-4 animate__animated animate__fadeInUp">
+                    <div class="program-card p-4 rounded shadow-sm border-top border-4 border-purple">
+                        <i class="fas fa-user-graduate program-icon"></i>
+                        <h3>Student Courses</h3>
+                        <p class="mb-4">Comprehensive self-paced lessons covering all levels from primary to university entrance exams</p>
+                        <ul class="mb-4">
+                            <li>WAEC/JAMB preparation</li>
+                            <li>TEAS exam coaching</li>
+                            <li>STEM foundation courses</li>
+                        </ul>
+                        <a href="#" class="btn btn-purple mt-auto align-self-start">Explore Courses</a>
+                    </div>
+                </div>
+                
+                <!-- Teacher Resources -->
+                <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="program-card p-4 rounded shadow-sm border-top border-4 border-gold">
+                        <i class="fas fa-chalkboard-teacher program-icon"></i>
+                        <h3>Teacher Toolkit</h3>
+                        <p class="mb-4">Professional development and classroom resources for educators</p>
+                        <ul class="mb-4">
+                            <li>Lesson plans & activities</li>
+                            <li>Pedagogy training</li>
+                            <li>Classroom management</li>
+                        </ul>
+                        <a href="#" class="btn btn-gold mt-auto align-self-start">Teacher Resources</a>
+                    </div>
+                </div>
+                
+                <!-- Parent Guides -->
+                <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="program-card p-4 rounded shadow-sm border-top border-4 border-green">
+                        <i class="fas fa-home program-icon"></i>
+                        <h3>Parent Guides</h3>
+                        <p class="mb-4">Tools to support your child's math journey at home</p>
+                        <ul class="mb-4">
+                            <li>Homework help strategies</li>
+                            <li>Growth mindset resources</li>
+                            <li>STEM career guidance</li>
+                        </ul>
+                        <a href="#" class="btn btn-green mt-auto align-self-start">Parent Resources</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Offer -->
+    <section class="py-5 bg-light">
+        <div class="container-fluid">
+            <h2 class="text-center section-title center mb-5">Our Ecosystem</h2>
+            <div class="row g-4">
+                <div class="col-md-4 animate__animated animate__fadeInLeft">
+                    <div class="h-100 p-4 somng-brand rounded shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-gold p-2 rounded-circle me-3">
+                                <i class="fas fa-school text-white" style="font-size: 1.5rem;"></i>
+                            </div>
+                            <h3 class="mb-0">SomNg</h3>
+                        </div>
+                        <p class="mb-4">Our flagship program providing free digital math education to students across Africa through online platforms and community learning centers.</p>
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check-circle text-gold me-2"></i>
+                                <span>Free video lessons</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check-circle text-gold me-2"></i>
+                                <span>Interactive quizzes</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-gold me-2"></i>
+                                <span>Exam preparation</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-outline-dark">Explore SomNg →</a>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__fadeInUp">
+                    <div class="h-100 p-4 uthrive-brand rounded shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-green p-2 rounded-circle me-3">
+                                <i class="fas fa-tree text-white" style="font-size: 1.5rem;"></i>
+                            </div>
+                            <h3 class="mb-0">UThrive</h3>
+                        </div>
+                        <p class="mb-4">Our offline-first initiative bringing quality math education to underserved communities with limited internet access.</p>
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check-circle text-green me-2"></i>
+                                <span>Solar-powered learning kits</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check-circle text-green me-2"></i>
+                                <span>Community math circles</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-green me-2"></i>
+                                <span>Rural teacher training</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-outline-success">Learn About UThrive →</a>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__fadeInRight">
+                    <div class="h-100 p-4 currigami-brand rounded shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-purple p-2 rounded-circle me-3">
+                                <i class="fas fa-book text-white" style="font-size: 1.5rem;"></i>
+                            </div>
+                            <h3 class="mb-0">Currigami</h3>
+                        </div>
+                        <p class="mb-4">Our curriculum design studio creating customized learning solutions for schools, NGOs, and educational organizations.</p>
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check-circle text-purple me-2"></i>
+                                <span>Curriculum development</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check-circle text-purple me-2"></i>
+                                <span>Teacher training programs</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-purple me-2"></i>
+                                <span>Educational consulting</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-outline-purple">Discover Currigami →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="py-5" id="about">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0 animate__animated animate__fadeInLeft">
+                    <h2 class="section-title">Our Story</h2>
+                    <p class="lead">
+The School of Mathematics in Nigeria is a learning innovation brand that makes math accessible, inclusive, and exciting, both online and offline.
+                    </p>
+                    <!-- <p>
+
+                    </p>
+                    <p>
+                        Today, we're a team of educators, technologists, and innovators working across multiple platforms to redefine math education for the 21st century.
+                    </p> -->
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <a href="about.html" class="btn btn-gold">Learn More</a>
+                      
+                    </div>
+                </div>
+                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                    <div class="position-relative">
+                        <img src="./images/math class.jpg" alt="rose danjuma" class="img-fluid rounded shadow-lg">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="py-5 bg-light">
+        <div class="container-fluid text-center">
+            <h2 class="section-title center mb-4">Trusted By Leading Organizations</h2>
+            <p class="text-muted mb-5">Collaborating to make math accessible worldwide</p>
+            
+            <div class="row justify-content-center align-items-center g-4">
+                <div class="col-6 col-md-3 col-lg-2 animate__animated animate__fadeIn animate__delay-1s">
+                    <img src="./images/brand1.jpg" alt="Partner Logo" class="img-fluid partner-logo">
+                </div>
+                <div class="col-6 col-md-3 col-lg-2 animate__animated animate__fadeIn animate__delay-2s">
+                    <img src="./images/brand2-removebg-preview.png" alt="Partner Logo" class="img-fluid partner-logo">
+                </div>
+                <div class="col-6 col-md-3 col-lg-2 animate__animated animate__fadeIn animate__delay-3s">
+                    <img src="./images/brand3-removebg-preview.png" alt="Partner Logo" class="img-fluid partner-logo">
+                </div>
+                <div class="col-6 col-md-3 col-lg-2 animate__animated animate__fadeIn animate__delay-4s">
+                    <img src="./images/brand4-removebg-preview.png" alt="Partner Logo" class="img-fluid partner-logo">
+                </div>
+                 <div class="col-6 col-md-3 col-lg-2 animate__animated animate__fadeIn animate__delay-4s">
+                    <img src="./images/brand5-removebg-preview.png" alt="Partner Logo" class="img-fluid partner-logo">
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Resources -->
+    <section class="py-5 bg-purple-gradient text-white" id="resources">
+        <div class="container-fluid text-center">
+            <h2 class="mb-4">Free Learning Resources</h2>
+            <p class="lead mb-5">
+                Download our collection of past questions, revision plans, printable formulas, and study guides
+            </p>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4 animate__animated animate__fadeInUp">
+                    <div class="p-4 bg-white text-dark rounded shadow-sm h-100">
+                        <div class="bg-purple text-white rounded-circle p-3 mb-3 mx-auto" style="width: 70px; height: 70px;">
+                            <i class="fas fa-file-pdf" style="font-size: 1.8rem;"></i>
+                        </div>
+                        <h4>WAEC/JAMB Pack</h4>
+                        <p>10 years of past questions with solutions</p>
+                        <a href="#" class="btn btn-gold">Download</a>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="p-4 bg-white text-dark rounded shadow-sm h-100">
+                        <div class="bg-purple text-white rounded-circle p-3 mb-3 mx-auto" style="width: 70px; height: 70px;">
+                            <i class="fas fa-calculator" style="font-size: 1.8rem;"></i>
+                        </div>
+                        <h4>Formula Sheets</h4>
+                        <p>All essential formulas for secondary math</p>
+                        <a href="#" class="btn btn-gold">Download</a>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="p-4 bg-white text-dark rounded shadow-sm h-100">
+                        <div class="bg-purple text-white rounded-circle p-3 mb-3 mx-auto" style="width: 70px; height: 70px;">
+                            <i class="fas fa-calendar-alt" style="font-size: 1.8rem;"></i>
+                        </div>
+                        <h4>Study Plans</h4>
+                        <p>30-day revision schedules for exams</p>
+                        <a href="#" class="btn btn-gold">Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation Projects -->
+    <section class="py-5">
+        <div class="container-fluid">
+            <h2 class="text-center section-title center mb-5">Innovation Projects</h2>
+            <div class="row g-4">
+                <div class="col-md-6 animate__animated animate__fadeInLeft">
+                    <div class="card border-0 shadow-sm h-100 overflow-hidden">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-6">
+                                <img src="./images/uthrive-project.jpg" class="img-fluid h-100" alt="UThrive project" style="object-fit: cover;">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body p-4">
+                                    <span class="badge bg-success mb-2">Featured Project</span>
+                                    <h3 class="text-success">UThrive Initiative</h3>
+                                    <p>Bringing offline-first math education to underserved communities across Nigeria through solar-powered learning kits and community math circles.</p>
+                                    <div class="progress mb-3">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="d-flex justify-content-between small text-muted mb-3">
+                                        <span>₦0 raised</span>
+                                        <span>Goal: ₦1,000,000</span>
+                                    </div>
+                                    <a href="#" class="btn btn-outline-success">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 animate__animated animate__fadeInRight">
+                    <div class="card border-0 shadow-sm h-100 overflow-hidden">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-6">
+                                <img src="./images/currigami-project.jpg" class="img-fluid h-100" alt="Currigami project" style="object-fit: cover;">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body p-4">
+                                    <span class="badge bg-purple mb-2">New Launch</span>
+                                    <h3 class="text-purple">Currigami Studio</h3>
+                                    <p>Developing customized math curricula for schools and NGOs, with a focus on culturally relevant content and practical applications.</p>
+                                    <ul class="mb-3">
+                                        <li>5 schools onboarded</li>
+                                        <li>3 NGO partnerships</li>
+                                        <li>200+ teachers trained</li>
+                                    </ul>
+                                    <a href="#" class="btn btn-outline-purple">Explore Services</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-light">
+        <div class="container-fluid text-center">
+            <h2 class="mb-4">Join the Math Education Movement</h2>
+            <p class="lead mb-5">Empower the next generation with math confidence and problem-solving skills</p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="#support" class="btn btn-lg btn-gold px-4 animate__animated animate__pulse animate__infinite">
+                    <i class="fas fa-hands-helping me-2"></i>Partner With Us
+                </a>
+                <a href="#support" class="btn btn-lg btn-success px-4">
+                    <i class="fas fa-donate me-2"></i>Make a Donation
+                </a>
+                <a href="#" class="btn btn-lg btn-outline-dark px-4">
+                    <i class="fas fa-user-plus me-2"></i>Join Our Team
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-5">
+        <div class="container-fluid">
+            <h2 class="text-center section-title center mb-5">Success Stories</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4 animate__animated animate__fadeInLeft">
+                    <div class="testimonial-card p-4 bg-white rounded shadow-sm h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-purple text-white rounded-circle p-2 me-3">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="mb-0 fst-italic">"SomNG isn't just a name, it's a move.Really a great one, 
+                                connected to SomNg birthed the start of a great thing for me on all grounds.
+                                 its' really a great institute of learning and t raise intentional leaders not 
+                                 just in Mathematics, but in all spheres of life. I'm priviledge to be connected to SomNg."</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <img src="./images/testi1.jpg" alt="Teacher" class="testimonial-img me-3">
+                            <div>
+                                <h6 class="mb-0">Adebayo</h6>
+                                <small class="text-muted">CEO MathGist,Nigeria</small>
+                                <div class="text-warning small mt-1">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 animate__animated animate__fadeInRight">
+                    <div class="testimonial-card p-4 bg-white rounded shadow-sm h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-gold text-dark rounded-circle p-2 me-3">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="mb-0 fst-italic">"It's been 3years of learning under SomNG and i must confess that it's been one of my best decisions"</p>
+                        </div>
+        
+                        <div class="d-flex align-items-center">
+                            <img src="./images/testi2.jpg" alt="Parent" class="testimonial-img me-3">
+                            <div>
+                                <h6 class="mb-0">Moji</h6>
+                                <small class="text-muted">Student, USA</small>
+                                <div class="text-warning small mt-1">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 animate__animated animate__fadeInLeft">
+                    <div class="testimonial-card p-4 bg-white rounded shadow-sm h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-green text-white rounded-circle p-2 me-3">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="mb-0 fst-italic">"we used UThrive videos in our college when a strike happened. it kept us going."</p>
+                        </div>
+                        <!-- testi 3 -->
+                        <div class="d-flex align-items-center">
+                            <img src="./images/testi3.jpg" alt="Teacher" class="testimonial-img me-3">
+                            <div>
+                                <h6 class="mb-0">Joel</h6>
+                                <small class="text-muted">Kafanchan</small>
+                                <div class="text-warning small mt-1">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-6 mb-4 animate__animated animate__fadeInRight">
+                    <div class="testimonial-card p-4 bg-white rounded shadow-sm h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-purple text-white rounded-circle p-2 me-3">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="mb-0 fst-italic">"I went from failing math to scoring 92% in WAEC thanks to the structured approach and supportive community."</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <img src="./images/testi4.jpg" alt="Student" class="testimonial-img me-3">
+                            <div>
+                                <h6 class="mb-0">Emeka O.</h6>
+                                <small class="text-muted">Student, Lagos</small>
+                                <div class="text-warning small mt-1">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Donation Section with WhatsApp Integration -->
+<section id="support" class="py-5 bg-light">
+    <div class="container-fluid">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Sponsor a Math Star!</h2>
+            <p class="lead">Your support helps us reach more learners across Africa and beyond</p>
+            
+            <!-- Progress Bar -->
+            <div class="progress-wrapper mx-auto" style="max-width: 600px;">
+                <div class="d-flex justify-content-between mb-2">
+                    <small>₦350,000 raised</small>
+                    <small>Goal: ₦1,000,000</small>
+                </div>
+                <div class="progress" style="height: 12px;">
+                    <div class="progress-bar bg-purple progress-bar-striped progress-bar-animated" 
+                         role="progressbar" 
+                         style="width: 35%" 
+                         aria-valuenow="35" 
+                         aria-valuemin="0" 
+                         aria-valuemax="100">
+                    </div>
+                </div>
+                <div class="text-center mt-2">
+                    <small class="text-muted">Funding 1000 math kits for rural students</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <!-- Donation Options -->
+            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp">
+                <div class="card border-0 shadow-sm h-100 donation-option">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-heart text-purple mb-4" style="font-size: 2.5rem;"></i>
+                        <h3>Quick Donation</h3>
+                        <p class="mb-4">Make an instant impact with these amounts:</p>
+                        
+                        <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+                            <a href="https://wa.me/2349014149124?text=Hello!%20I%20want%20to%20donate%20₦1,000%20to%20support%20math%20education" 
+                               class="btn btn-outline-purple px-4" 
+                               target="_blank">
+                               ₦1,000
+                            </a>
+                            <a href="https://wa.me/2349014149124?text=Hello!%20I%20want%20to%20donate%20₦5,000%20to%20support%20math%20education" 
+                               class="btn btn-gold px-4" 
+                               target="_blank">
+                               ₦5,000
+                            </a>
+                            <a href="https://wa.me/2349014149124?text=Hello!%20I%20want%20to%20donate%20₦10,000%20to%20support%20math%20education" 
+                               class="btn btn-outline-success px-4" 
+                               target="_blank">
+                               ₦10,000
+                            </a>
+                        </div>
+                        
+                        <div class="alert alert-info small mb-0">
+                            <i class="fab fa-whatsapp me-2"></i>
+                            <strong>Instant Support:</strong> Chat with us on WhatsApp
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bank Transfer -->
+            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="card border-0 shadow-sm h-100 donation-option">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-university text-gold mb-4" style="font-size: 2.5rem;"></i>
+                        <h3>Bank Transfer</h3>
+                        <div class="text-start bg-white p-3 rounded mb-4" id="bankDetails">
+                            <p class="mb-1"><strong>Bank Name:</strong> UBA</p>
+                            <p class="mb-1"><strong>Account Name:</strong> School of Mathematics Nigeria LTD</p>
+                            <p class="mb-1"><strong>Account Number:</strong> 1026471283</p>
+                            <p class="mb-0"><strong>Type:</strong> Business Account</p>
+                        </div>
+                        <button class="btn btn-success w-100" onclick="copyBankDetails()">
+                            <i class="fas fa-copy me-2"></i>Copy Account Details
+                        </button>
+                        <div id="copyConfirmation" class="small text-success mt-2" style="display:none;">
+                            <i class="fas fa-check-circle"></i> Copied to clipboard!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Impact Statement -->
+            <div class="col-lg-4 animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="card border-0 bg-purple text-black h-100">
+                    <div class="card-body p-4">
+                        <h3 class="mb-4">Your Support Matters</h3>
+                        <ul class="impact-statement list-unstyled mb-4">
+                            <li>₦5,000 sponsors math kits for 2 students</li>
+                            <li>₦10,000 funds a teacher training session</li>
+                            <li>₦50,000 supports our free YouTube content</li>
+                            <li>₦100,000 establishes a community math circle</li>
+                        </ul>
+                        <div class="bg-white text-purple p-3 rounded">
+                            <strong>All donations receive:</strong>
+                            <div class="small mt-2">
+                                <i class="fas fa-receipt me-2"></i>Tax-deductible receipt<br>
+                                <i class="fas fa-envelope me-2"></i>Quarterly impact report<br>
+                                <i class="fas fa-certificate me-2"></i>Recognition certificate
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter -->
+    <section class="py-5">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-3">Stay Updated</h2>
+                    <p class="lead mb-4">Subscribe to our newsletter for updates on new resources, projects, and opportunities</p>
+                    <form class="row g-3 justify-content-center">
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Your email address" required>
+                                <button type="submit" class="btn btn-gold">
+                                    <i class="fas fa-paper-plane me-2"></i>Subscribe
+                                </button>
+                            </div>
+                            <small class="text-muted">We respect your privacy. Unsubscribe at any time.</small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-5 pb-4 bg-dark text-white text-decoration-none" id="contact">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="./images/Schoolofmlogo.png" 
+                             alt="School of Mathematics Nigeria Logo" 
+                             style="height: 50px; width: auto; margin-right: 10px;">
+                        <h3 class="mb-0">School of Mathematics Nigeria</h3>
+                    </div>
+                    <p class="mb-4">Innovating math education across Africa through accessible, engaging, and effective learning solutions.</p>
+                    <div class="social-icons mb-4">
+                        <a href="#" class="social-icon text-white me-2 text-decoration-none"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon text-white me-2 text-decoration-none"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon text-white me-2 text-decoration-none"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon text-white me-2 text-decoration-none "><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon text-white text-decoration-none"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <div class="small text-muted">
+                        <i class="fas fa-map-marker-alt me-2"></i> Lagos, Nigeria | Global Impact
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled ">
+                        <li><a href="#home" class="footer-link text-decoration-none">Home</a></li>
+                        <li><a href="#about" class="footer-link text-decoration-none">About Us</a></li>
+                        <li><a href="#programs" class="footer-link text-decoration-none">Programs</a></li>
+                        <li><a href="#resources" class="footer-link text-decoration-none">Resources</a></li>
+                        <li><a href="#testimonials" class="footer-link text-decoration-none">Success Stories</a></li>
+                        <li><a href="#support" class="footer-link text-decoration-none">Support Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5>Programs</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link text-decoration-none">SomNg Digital Learning</a></li>
+                        <li><a href="#" class="footer-link text-decoration-none">UThrive Initiative</a></li>
+                        <li><a href="#" class="footer-link text-decoration-none">Currigami Studio</a></li>
+                        <li><a href="#" class="footer-link text-decoration-none">Teacher Training</a></li>
+                        <li><a href="#" class="footer-link text-decoration-none">Parent Workshops</a></li>
+                        <li><a href="#" class="footer-link text-decoration-none">Community Math Circles</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2 text-muted"></i>
+                            <a href="mailto:contact@schoolofmath.ng" class="footer-link text-decoration-none">contact@schoolofmath.ng</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fab fa-whatsapp me-2 text-muted"></i>
+                            <a href="https://wa.me/2349014149124" class="footer-link text-decoration-none">+234 901 414 9124</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2 text-muted"></i>
+                            <a href="tel:+2349014149124" class="footer-link text-decoration-none">+234 901 414 9124</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-clock me-2 text-muted text-decoration-none"></i>
+                            Mon-Fri: 9AM - 5PM WAT
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0 small">&copy; 2025 School of Mathematics Nigeria. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-muted small me-3">Privacy Policy</a>
+                    <a href="#" class="text-muted small me-3">Terms of Service</a>
+                    <a href="#" class="text-muted small">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-gold btn-lg back-to-top" style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="./bootstrap/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Copy bank details function
+        function copyBankDetails() {
+            const bankDetails = document.getElementById('bankDetails');
+            const range = document.createRange();
+            range.selectNode(bankDetails);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            
+            // Show confirmation
+            const confirmation = document.getElementById('copyConfirmation');
+            confirmation.style.display = 'block';
+            setTimeout(() => {
+                confirmation.style.display = 'none';
+            }, 2000);
+        }
+
+        // Back to top button
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        // Animation on scroll initialization
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate__animated');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    const animationClass = element.classList[1];
+                    element.classList.add(animationClass);
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+    </script>
+</body>
+</html>
