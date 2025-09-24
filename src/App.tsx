@@ -37,7 +37,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className="pt-20"> {/* Padding for fixed navbar */}
-        <Navbar isScrolled={isScrolled} />
+        <Navbar />
         <AnimatePresence>
           <motion.main
             initial={{ opacity: 0 }}
