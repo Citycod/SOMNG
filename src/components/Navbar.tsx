@@ -4,7 +4,7 @@ import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserPlus, faTimes, faBars, faChevronDown, faHome, faBook, faGraduationCap, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus, faTimes, faBars, faHome, faBook, faGraduationCap, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 interface MenuItem {
   to: string;
@@ -313,5 +313,6 @@ const Navbar: React.FC<NavbarProps> = React.memo(({ isScrolled }) => {
 });
 
 Navbar.displayName = 'Navbar';
+
 
 export default Navbar;
