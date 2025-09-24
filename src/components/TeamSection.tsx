@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 interface TeamMember {
   name: string;
@@ -28,10 +28,11 @@ const TeamSection: React.FC = () => {
       image: "/images/rose danjuma.jpg",
       alt: "Founder",
       social: {
-        linkedin: "https://www.linkedin.com/in/rosedanjuma?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        linkedin:
+          "https://www.linkedin.com/in/rosedanjuma?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         twitter: "#",
         email: "somnigeria@gmail.com",
-      }
+      },
     },
     {
       name: "Kyomnom Ephraim",
@@ -43,7 +44,7 @@ const TeamSection: React.FC = () => {
         linkedin: "#",
         twitter: "#",
         email: "#",
-      }
+      },
     },
     {
       name: "Aboluwarin Oluwatobiloba Rosemary",
@@ -55,54 +56,15 @@ const TeamSection: React.FC = () => {
         linkedin: "#",
         twitter: "#",
         email: "#",
-      }
-    }
+      },
+    },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 50,
-      scale: 0.95
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        damping: 15,
-        stiffness: 100,
-        duration: 0.6
-      }
-    }
-  };
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  };
-
   return (
-    <section id="team" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+    <section
+      id="team"
+      className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden"
+    >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-32 h-32 bg-blue-200 rounded-full opacity-10 blur-xl"></div>
@@ -110,37 +72,44 @@ const TeamSection: React.FC = () => {
       </div>
 
       <div className="container relative px-4 mx-auto">
-        <motion.h2 
+        {/* Title */}
+        <motion.h2
           className="text-center mb-16 text-4xl font-bold font-playfair text-gray-900"
-          variants={titleVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           Our Leadership Team
         </motion.h2>
 
-        <motion.div 
+        {/* Team Members */}
+        <div
           ref={ref}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
         >
           {teamMembers.map((member, index) => (
             <motion.div
               key={index}
-              variants={itemVariants}
-              whileHover={{ 
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{
+                type: "spring",
+                damping: 15,
+                stiffness: 100,
+                duration: 0.6,
+                delay: index * 0.2, // stagger effect
+              }}
+              whileHover={{
                 y: -8,
-                transition: { duration: 0.3 }
+                transition: { duration: 0.3 },
               }}
               className="group"
             >
               <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 group-hover:border-blue-200">
                 {/* Image Container */}
                 <div className="relative overflow-hidden">
-                  <img 
-                    src={member.image} 
+                  <img
+                    src={member.image}
                     alt={member.alt}
                     className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -199,9 +168,7 @@ const TeamSection: React.FC = () => {
               </div>
             </motion.div>
           ))}
-        </motion.div>
-
-      
+        </div>
       </div>
     </section>
   );
