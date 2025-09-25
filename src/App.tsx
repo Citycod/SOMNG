@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -20,24 +20,11 @@ import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import Preloader from './components/Preloader';
 
-
-
-
 const App: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <Router>
-      <div className="pt-20"> {/* Padding for fixed navbar */}
-        <Navbar />
+      <div className="pt-20">
+        <Navbar /> {/* Removed isScrolled prop */}
         <AnimatePresence>
           <motion.main
             initial={{ opacity: 0 }}
@@ -45,7 +32,6 @@ const App: React.FC = () => {
             transition={{ duration: 0.5 }}
           >
             <Routes>
-              {/* Homepage Route */}
               <Route
                 path="/"
                 element={
@@ -67,8 +53,6 @@ const App: React.FC = () => {
                   </>
                 }
               />
-
-             
             </Routes>
           </motion.main>
         </AnimatePresence>
