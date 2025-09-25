@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
         <hr className="my-8 border-gray-700" />
         <div className="flex flex-col items-center justify-between md:flex-row">
           <p className="text-sm text-gray-400">&copy; 2025 School of Mathematics Nigeria. All rights reserved.</p>
-          <a href="https://portfolio-neon-ten-34.vercel.app/"> Made by Uplix</a>
+          <a href="https://portfolio-neon-ten-34.vercel.app/" className="text-white"> Made by Uplix</a>
           <div className="flex mt-4 space-x-4 md:mt-0">
             {['Privacy Policy', 'Terms of Service', 'Sitemap'].map((link, i) => (
               <a key={i} href="#" className="text-gray-400 transition hover:text-white">{link}</a>
@@ -81,3 +81,4 @@ const Footer: React.FC = () => {
 
 
 export default Footer;
+
