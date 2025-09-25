@@ -10,7 +10,7 @@ const projects = [
     badgeStyle: 'bg-green',
     titleStyle: 'text-green',
     buttonStyle: 'border-green text-green hover:bg-green hover:text-white',
-    image: '/public/images/thrive.jpeg',
+    image: '/images/thrive.jpeg',
     description: 'Bringing offline-first math education to underserved communities across Nigeria through solar-powered learning kits and community math circles.',
     progress: 45,
     goal: '₦1,000,000',
@@ -22,7 +22,7 @@ const projects = [
     badgeStyle: 'bg-purple',
     titleStyle: 'text-purple',
     buttonStyle: 'border-purple text-purple hover:bg-purple hover:text-white',
-    image: '/public/images/currigami.png',
+    image: '/images/currigami.png',
     description: 'Developing customized math curricula for schools and NGOs, with a focus on culturally relevant content and practical applications.',
     items: ['5 schools onboarded', '3 NGO partnerships', '200+ teachers trained'],
     link: 'https://www.instagram.com/currigami?igsh=MWp6cGVldjQydG50Mw=='
@@ -135,5 +135,6 @@ const InnovationProjects: React.FC = () => {
     </section>
   );
 };
+
 
 export default InnovationProjects;
